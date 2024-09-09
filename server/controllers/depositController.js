@@ -1,18 +1,21 @@
-const Web3 = require('web3').default;
+const { Network, Alchemy } = require("alchemy-sdk");
 const Deposit = require('../models/Deposit');
 const logger = require('../utils/logger');
 
-const web3 = new Web3(`https://eth-sepolia.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`);
+const settings = {
+    apiKey: process.env.ALCHEMY_API_KEY,
+    network: Network.ETH_SEPOLIA,
+  };
+const alchemy = new Alchemy(settings);
 const beaconContractAddress = '0x00000000219ab540356cBB839Cbe05303d7705Fa';
 
 const trackDeposits = async (req, res) => {
     try {
-        const latestBlock = await web3.eth.getBlock('latest');
+        const latestBlock = await alchemy.core.getBlockWithTransactions('latest');
         const deposits = [];
 
         for (let i = 0; i < latestBlock.transactions.length; i++) {
-            const tx = await web3.eth.getTransaction(latestBlock.transactions[i]);
-            console.log('Transaction:', tx);
+            const tx = latestBlock.transactions[i];
             if (tx.to === beaconContractAddress) {
                 const deposit = new Deposit({
                     blockNumber: tx.blockNumber,
