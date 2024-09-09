@@ -17,6 +17,16 @@ const DepositTable = () => {
         fetchDeposits();
     }, []);
 
+    const handleCopy = (text) => {
+        navigator.clipboard.writeText(text)
+            .then(() => alert('Copied to clipboard'))
+            .catch(() => alert('Failed to copy'));
+    };
+
+    const trimValue = (value) => {
+        return value.length > 30 ? `${value.slice(0, 30)}...` : value;
+    };
+
     return (
         <div className="depTable">
             <h1>Tracked Deposits</h1>
@@ -36,8 +46,20 @@ const DepositTable = () => {
                             <td>{deposit.blockNumber}</td>
                             <td>{new Date(deposit.blockTimestamp).toLocaleString()}</td>
                             <td>{deposit.fee}</td>
-                            <td>{deposit.hash}</td>
-                            <td>{deposit.pubkey}</td>
+                            <td 
+                                onClick={() => handleCopy(deposit.hash)}
+                                style={{ cursor: 'pointer' }}
+                                title={deposit.hash}
+                            >
+                                {trimValue(deposit.hash)}
+                            </td>
+                            <td 
+                                onClick={() => handleCopy(deposit.pubkey)}
+                                style={{ cursor: 'pointer' }}
+                                title={deposit.pubkey}
+                            >
+                                {trimValue(deposit.pubkey)}
+                            </td>
                         </tr>
                     ))}
                 </tbody>

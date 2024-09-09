@@ -95,14 +95,11 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   width:100%;
 }
 
 .blockTable{
   background-color: rgba(111, 111, 111, 0.8);
-  width:90%;
-  height:300px;
 }
 
 h1 {
