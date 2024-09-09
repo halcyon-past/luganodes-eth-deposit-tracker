@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:  
+  backend:    
+    build: ./server    
+    container_name: backend    
+    ports:      
+      - "5000:5000"    
+    environment:      
+      - NODE_ENV=production    
+    volumes:     
+      - ./server:/usr/src/app    
+    networks:      
+      - app-network  
+  frontend:    
+    build: ./client    
+    container_name: frontend    
+    ports:      
+      - "3000:3000"    
+    networks:      
+      - app-network    
+    depends_on:      
+      - backend
+
+networks:  
+    app-network:    
+      driver: bridge
