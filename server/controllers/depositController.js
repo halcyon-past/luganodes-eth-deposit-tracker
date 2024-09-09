@@ -4,7 +4,7 @@ const logger = require('../utils/logger');
 
 const settings = {
     apiKey: process.env.ALCHEMY_API_KEY,
-    network: Network.ETH_SEPOLIA,
+    network: Network.ETH_MAINNET,
   };
 const alchemy = new Alchemy(settings);
 const beaconContractAddress = '0x00000000219ab540356cBB839Cbe05303d7705Fa';

@@ -10,19 +10,19 @@ const LoginPage = () => {
 
         try {
             const response = await axios.post(`${import.meta.env.VITE_API_URL}/login`, { username });
-            localStorage.setItem('token', response.data.token); // Store JWT token
-            window.location.href = '/'; // Redirect to home page
+            localStorage.setItem('token', response.data.token);
+            window.location.href = '/';
         } catch (error) {
             setError('Login failed. Please try again.');
         }
     };
 
     return (
-        <div>
-            <h2>Login</h2>
-            <form onSubmit={handleLogin}>
-                <div>
-                    <label htmlFor="username">Username:</label>
+        <div className="loginForm">
+            <form className="formDesign" onSubmit={handleLogin}>
+            <h1>Eth-Deposit Tracker</h1>
+                <div class="inputName">
+                    <label htmlFor="username">Hello User, enter your name</label>
                     <input
                         type="text"
                         id="username"

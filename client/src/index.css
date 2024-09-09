@@ -1,7 +1,14 @@
+:root{
+  color-scheme: dark;
+}
+
 body {
   font-family: Arial, sans-serif;
-  margin: 20px;
   padding: 0;
+  background-image: url(../public/background.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 h1 {
@@ -30,4 +37,78 @@ button {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
+}
+
+.loginForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width:100%;
+  height:100vh;
+  margin: 0 auto;
+}
+
+.formDesign{
+  height:500px;
+  width:500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(111, 111, 111, 0.8);
+  border-radius: 20px;
+}
+
+.inputName{
+  width: 300px;
+  height: 100px;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+.inputName input{
+  width: 100%;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.formDesign button{
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 10px;
+  background-color: #4CAF50dd;
+  color: white;
+}
+
+.formDesign button:hover{
+  background-color: #45a049dd;
+}
+
+.depTable{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+}
+
+.blockTable{
+  background-color: rgba(111, 111, 111, 0.8);
+  width:90%;
+  height:300px;
+}
+
+h1 {
+  font-size: 72px;
+  background: -webkit-linear-gradient(#60e08a, #555ae4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: honeydew 0 0 5px;
 }

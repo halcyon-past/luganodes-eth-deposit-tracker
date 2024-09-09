@@ -18,9 +18,9 @@ const DepositTable = () => {
     }, []);
 
     return (
-        <div>
-            <h2>Tracked Deposits</h2>
-            <table>
+        <div className="depTable">
+            <h1>Tracked Deposits</h1>
+            <table className="blockTable">
                 <thead>
                     <tr>
                         <th>Block Number</th>
