@@ -3,12 +3,15 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const depositRoutes = require('./routes/depositRoutes');
 const logger = require('./utils/logger');
+const Cors = require('cors');
 
 dotenv.config();
 
 const app = express();
 
 connectDB();
+
+app.use(Cors());
 
 app.use(express.json());
 

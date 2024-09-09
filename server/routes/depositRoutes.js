@@ -12,6 +12,6 @@ router.get('/', (req, res) => {
 router.get('/deposits', getDeposits);
 router.post('/deposits', addDeposit);
 router.post('/deposits/track', authenticateToken, trackDeposits);
-router.get('/login', generateToken);
+router.post('/login', generateToken);
 
 module.exports = router;

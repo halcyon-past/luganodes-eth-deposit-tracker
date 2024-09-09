@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
+import DepositTable from './components/DepositTable';
+import TrackDepositButton from './components/TrackDepositButton';
+import LoginPage from './pages/LoginPage';
+import LogoutButton from './components/LogoutButton';
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [refresh, setRefresh] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
+    const navigate = useNavigate();
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    const handleTrack = () => {
+        setRefresh(!refresh); // Trigger a re-fetch in DepositTable
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        setIsLoggedIn(false);
+        navigate('/login'); // Redirect to login page
+    };
+
+    useEffect(() => {
+        setIsLoggedIn(!!localStorage.getItem('token'));
+    }, []);
+
+    return (
+        <div className="App">
+            {isLoggedIn ? (
+                <>
+                    <TrackDepositButton onTrack={handleTrack} />
+                    <DepositTable key={refresh} />
+                    <LogoutButton onLogout={handleLogout} />
+                </>
+            ) : (
+                <LoginPage />
+            )}
+        </div>
+    );
 }
 
-export default App
+export default function AppWrapper() {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<App />} />
+                <Route path="/login" element={<LoginPage />} />
+            </Routes>
+        </Router>
+    );
+}
