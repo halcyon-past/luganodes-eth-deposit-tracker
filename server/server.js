@@ -13,6 +13,12 @@ connectDB();
 
 app.use(Cors());
 
+app.use((req, res, next) => {
+    req.setTimeout(5 * 60 * 1000);
+    res.setTimeout(5 * 60 * 1000);
+    next();
+});
+
 app.use(express.json());
 
 app.use('/api', depositRoutes);

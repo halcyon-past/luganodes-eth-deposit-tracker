@@ -6,6 +6,8 @@ const { ethers } = require("ethers");
 const settings = {
     apiKey: process.env.ALCHEMY_API_KEY,
     network: Network.ETH_MAINNET,
+    maxRetries: 3,
+    timeout: 300000,
 };
 const alchemy = new Alchemy(settings);
 const beaconContractAddress = '0x00000000219ab540356cBB839Cbe05303d7705Fa';
@@ -25,12 +27,14 @@ function calculateFee(gasUsed, effectiveGasPrice) {
 const trackDeposits = async (req, res) => {
     logger.info('Tracking deposits...');
     try {
+        logger.info('Starting to fetch block number...');
         const latestBlockNumber = await alchemy.core.getBlockNumber();
-
-        const fromBlock = latestBlockNumber - 200;
+        logger.info(`Fetched latest block number: ${latestBlockNumber}`);
+        
+        const fromBlock = latestBlockNumber - 500;
         const transfers = await alchemy.core.getAssetTransfers({
             fromBlock: `0x${fromBlock.toString(16)}`,
-            toBlock: 'latest',
+            toBlock: `0x${latestBlockNumber.toString(16)}`,
             toAddress: beaconContractAddress,
             category: ["external"],
             maxCount: 10,
