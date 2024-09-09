@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken');
+const logger = require('../utils/logger');
 
 const generateToken = (req, res) => {
-    console.log('Generating token...');
     const username = req.body.username;
-    console.log('Username:', username);
+    logger.info(`Generating token for user: ${username}`);
 
     if (!username) {
         return res.status(400).json({ message: 'Username is required' });

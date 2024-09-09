@@ -10,12 +10,10 @@ const settings = {
 const alchemy = new Alchemy(settings);
 const beaconContractAddress = '0x00000000219ab540356cBB839Cbe05303d7705Fa';
 
-// ABI for the DepositEvent
 const depositEventABI = [
     "event DepositEvent(bytes pubkey, bytes withdrawal_credentials, bytes amount, bytes signature, bytes index)"
 ];
 
-// Create an interface to decode the logs
 const depositEventInterface = new ethers.Interface(depositEventABI);
 
 function calculateFee(gasUsed, effectiveGasPrice) {
@@ -25,11 +23,10 @@ function calculateFee(gasUsed, effectiveGasPrice) {
 }
 
 const trackDeposits = async (req, res) => {
-    console.log('Tracking deposits');
+    logger.info('Tracking deposits...');
     try {
-        // Fetch the latest block number
         const latestBlockNumber = await alchemy.core.getBlockNumber();
-        console.log(`Latest block number: ${latestBlockNumber}`);
+
         const fromBlock = latestBlockNumber - 200;
         const transfers = await alchemy.core.getAssetTransfers({
             fromBlock: `0x${fromBlock.toString(16)}`,
