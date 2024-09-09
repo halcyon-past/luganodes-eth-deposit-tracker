@@ -1,29 +1,66 @@
 const { Network, Alchemy } = require("alchemy-sdk");
 const Deposit = require('../models/Deposit');
 const logger = require('../utils/logger');
+const { ethers } = require("ethers");
 
 const settings = {
     apiKey: process.env.ALCHEMY_API_KEY,
     network: Network.ETH_MAINNET,
-  };
+};
 const alchemy = new Alchemy(settings);
 const beaconContractAddress = '0x00000000219ab540356cBB839Cbe05303d7705Fa';
 
+// ABI for the DepositEvent
+const depositEventABI = [
+    "event DepositEvent(bytes pubkey, bytes withdrawal_credentials, bytes amount, bytes signature, bytes index)"
+];
+
+// Create an interface to decode the logs
+const depositEventInterface = new ethers.Interface(depositEventABI);
+
+function calculateFee(gasUsed, effectiveGasPrice) {
+    const feeWei = BigInt(gasUsed) * BigInt(effectiveGasPrice);
+    const feeEth = Number(feeWei) / 1e18;
+    return feeEth.toFixed(18) + " ETH";
+}
+
 const trackDeposits = async (req, res) => {
+    console.log('Tracking deposits');
     try {
-        const latestBlock = await alchemy.core.getBlockWithTransactions('latest');
+        // Fetch the latest block number
+        const latestBlockNumber = await alchemy.core.getBlockNumber();
+        console.log(`Latest block number: ${latestBlockNumber}`);
+        const fromBlock = latestBlockNumber - 200;
+        const transfers = await alchemy.core.getAssetTransfers({
+            fromBlock: `0x${fromBlock.toString(16)}`,
+            toBlock: 'latest',
+            toAddress: beaconContractAddress,
+            category: ["external"],
+            maxCount: 10,
+            order: "desc"
+        });
+
         const deposits = [];
 
-        for (let i = 0; i < latestBlock.transactions.length; i++) {
-            const tx = latestBlock.transactions[i];
-            if (tx.to === beaconContractAddress) {
+        for (const transfer of transfers.transfers) {
+            const transaction = await alchemy.core.getTransactionReceipt(transfer.hash);
+            const block = await alchemy.core.getBlock(transaction.blockNumber);
+
+            const logs = transaction.logs.filter(log => 
+                log.address.toLowerCase() === beaconContractAddress.toLowerCase()
+            );
+
+            if (logs.length > 0) {
+                const decodedData = depositEventInterface.decodeEventLog("DepositEvent", logs[0].data, logs[0].topics);
+
                 const deposit = new Deposit({
-                    blockNumber: tx.blockNumber,
-                    blockTimestamp: latestBlock.timestamp,
-                    fee: web3.utils.fromWei(tx.gasPrice, 'ether'),
-                    hash: tx.hash,
-                    pubkey: tx.input,
+                    blockNumber: transaction.blockNumber,
+                    blockTimestamp: block.timestamp,
+                    fee: calculateFee(transaction.gasUsed, transaction.effectiveGasPrice),
+                    hash: transaction.transactionHash,
+                    pubkey: decodedData.pubkey,
                 });
+
                 await deposit.save();
                 deposits.push(deposit);
             }
@@ -35,6 +72,7 @@ const trackDeposits = async (req, res) => {
         res.status(500).json({ success: false, message: 'Server error' });
     }
 };
+
 
 const getDeposits = async (req, res) => {
     try {
