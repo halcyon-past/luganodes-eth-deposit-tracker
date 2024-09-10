@@ -21,7 +21,7 @@ const LoginPage = () => {
         <div className="loginForm">
             <form className="formDesign" onSubmit={handleLogin}>
             <h1>Eth-Deposit Tracker</h1>
-                <div class="inputName">
+                <div className="inputName">
                     <label htmlFor="username">Hello User, enter your name</label>
                     <input
                         type="text"
