@@ -5,6 +5,8 @@ This directory contains the backend server for the Ethereum Deposit Tracker appl
 ## Table of Contents
 - [Features](#features)
 - [Getting Started](#getting-started)
+    - [Prerequistes](#prerequisites)
+    - [Installation](#installation)
 - [Environment Variables](#environment-variables)
 - [Endpoints](#endpoints)
 - [Technologies Used](#technologies-used)
