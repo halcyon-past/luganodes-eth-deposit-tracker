@@ -13,14 +13,14 @@ Ethereum Deposit Tracker is a full-stack web application designed to monitor and
 ![Table](/assets/Table.png)
 
 ## Table of Contents
-- Features
-- Project Structure
-- Getting Started
-    - Prerequisites
-    - Installation
-- Environment Variables
-- Running the Application
-- Technologies Used
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+- [Environment Variables](#environment-variables)
+- [Running the Application](#running-the-application)
+- [Technologies Used](#technologies-used)
 
 ## Features
 - ```Ethereum Deposit Monitoring:``` Tracks and stores the latest Ethereum deposits related to the Beacon Deposit Contract.
