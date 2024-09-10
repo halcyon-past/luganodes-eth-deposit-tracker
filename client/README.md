@@ -1,8 +1,35 @@
-# React + Vite
+# Ethereum Deposit Tracker - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This directory contains the frontend application for the Ethereum Deposit Tracker. The frontend is a web interface that allows users to view and interact with Ethereum deposit data retrieved from the backend server.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Features
+- Getting Started
+- Environment Variables
+- Available Scripts
+- Technologies Used
+- Deployment
+
+## Features
+
+- ```User Authentication:``` Secure login functionality using JWTs.
+- ```View Ethereum Deposits:``` Display a table of the latest Ethereum deposits related to the Beacon Deposit Contract.
+- ```Copy to Clipboard:``` Allow users to copy long deposit values with a single click.
+- ```Responsive Design:``` Optimized for both desktop and mobile viewing.
+- ```Minimalistic UI:``` Clean and user-friendly interface.
+
+## Getting Started
+
+### Prerequisites
+Ensure you have the following installed:
+
+- Node.js (v14 or later)
+- npm or yarn
+
+### Installation
+1. Clone the repository
+    ```
+    git clone https://github.com/halcyon-past/luganodes-eth-deposit-tracker.git
+    cd client
+    ```
