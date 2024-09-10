@@ -4,11 +4,11 @@ This directory contains the frontend application for the Ethereum Deposit Tracke
 
 ## Table of Contents
 
-- Features
-- Getting Started
-- Environment Variables
-- Available Scripts
-- Technologies Used
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Environment Variables](#environment-variables)
+- [Available Scripts](#available-scripts)
+- [Technologies Used](#technologies-used)
 
 ## Features
 
