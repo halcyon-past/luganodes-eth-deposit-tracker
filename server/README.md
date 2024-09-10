@@ -60,7 +60,7 @@ If you prefer to run the server using Docker, follow these steps:
 
 2. Run the Docker Container
     ```
-    docker run -d -p 3000:3000 --env-file .env eth-deposit-tracker-server
+    docker run -d -p 5000:5000 --env-file .env eth-deposit-tracker-server
     ```
 
 ## Environment Variables
