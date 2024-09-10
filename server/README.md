@@ -115,14 +115,14 @@ PORT=3000
     - Track all the latest blocks in the blockchain and store thenm in the database
 
 ## Technologies Used
-- Node.js: JavaScript runtime for building the backend.
-- Express.js: Web framework for handling routes and middleware.
-- MongoDB: NoSQL database for storing Ethereum deposit data.
-- Mongoose: ODM for MongoDB to manage database operations.
-- Alchemy: To get the latest data about the beacon deposit contract.
-- Axios: Promise-based HTTP client for making requests.
-- jsonwebtoken: Library for creating and verifying JWTs.
-- dotenv: Module for loading environment variables.
+- ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) JavaScript runtime for building the backend.
+- ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) Web framework for handling routes and middleware.
+- ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) NoSQL database for storing Ethereum deposit data.
+- ```Mongoose:``` ODM for MongoDB to manage database operations.
+- ```Alchemy:``` To get the latest data about the beacon deposit contract.
+- ```Axios:``` Promise-based HTTP client for making requests.
+- ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens) Library for creating and verifying JWTs.
+- ```dotenv:``` Module for loading environment variables.
 
 ## Troubleshooting
 
