@@ -106,7 +106,6 @@ Ensure you have the following installed:
     npm install
     cd ../client
     npm install
-
     ```
 3. Set up environment variables:
     Configure the necessary environment variables for both the frontend and backend (see [Environment Variables]() below).
@@ -128,7 +127,7 @@ Example .env file:
 MONGO_URI=mongodb://localhost:27017/eth_deposits
 ALCHEMY_API_KEY=your_alchemy_api_key
 ACCESS_TOKEN_SECRET=your_jwt_secret
-PORT=3000
+PORT=5000
 ```
 
 ### Frontend
