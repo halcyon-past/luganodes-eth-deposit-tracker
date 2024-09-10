@@ -78,8 +78,8 @@ In the project directory, you can run:
 - npm run build: Builds the app for production to the build folder.
 
 ## Technologies Used
-- React.js: Frontend library for building user interfaces.
-- Vite: For Build and Deployment.
+- ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) Frontend library for building user interfaces.
+- ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) For Build and Deployment.
 - Axios: Promise-based HTTP client for making API requests.
-- React Router: Library for routing within the application.
+- ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) Library for routing within the application.
 
