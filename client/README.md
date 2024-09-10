@@ -31,7 +31,7 @@ Ensure you have the following installed:
 1. Clone the repository
     ```
     git clone https://github.com/halcyon-past/luganodes-eth-deposit-tracker.git
-    cd client
+    cd luganodes-eth-deposit-tracker/client
     ```
 2. Install Dependencies
     ```
