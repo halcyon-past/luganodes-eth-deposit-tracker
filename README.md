@@ -175,4 +175,22 @@ Frontend
 
 ## Technologies Used
 
+### Backend
+
+- ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) JavaScript runtime for building the backend.
+- ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) Web framework for handling routes and middleware.
+- ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) NoSQL database for storing Ethereum deposit data.
+- ```Mongoose:``` ODM for MongoDB to manage database operations.
+- ```Alchemy:``` To get the latest data about the beacon deposit contract.
+- ```Axios:``` Promise-based HTTP client for making requests.
+- ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens) Library for creating and verifying JWTs.
+- ```dotenv:``` Module for loading environment variables.
+
+### Frontend
+
+- ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) Frontend library for building user interfaces.
+- ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) For Build and Deployment.
+- Axios: Promise-based HTTP client for making API requests.
+- ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) Library for routing within the application.
+
 
