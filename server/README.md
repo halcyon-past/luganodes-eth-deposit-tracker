@@ -78,7 +78,7 @@ Example .env file:
 MONGO_URI=mongodb://localhost:27017/eth_deposits
 ALCHEMY_API_KEY=your_alchemy_api_key
 ACCESS_TOKEN_SECRET=your_jwt_secret
-PORT=3000
+PORT=5000
 ```
 
 ## Endpoints
